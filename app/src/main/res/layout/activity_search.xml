@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:background="@color/grey_bg"
+    tools:context=".mActivity.SearchActivity"
+    android:orientation="vertical">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:background="@color/grey_f0f0f0"
+        android:padding="3dp"
+        android:layout_height="50dp">
+        <ImageView
+            android:id="@+id/search_iv_back"
+            android:layout_margin="10dp"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:onClick="onClick"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/it_back"/>
+        <EditText
+            android:id="@+id/search_et"
+            android:layout_width="290dp"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/search_iv_back"
+            android:background="@drawable/dialog_cancel_bg"
+            android:paddingTop="10dp"
+            android:textSize="16sp"
+            android:paddingBottom="10dp"
+            android:paddingLeft="20dp"
+            android:hint="@string/please_search_info"/>
+        <Button
+            android:id="@+id/search_iv_sh"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="5dp"
+            android:onClick="onClick"
+            android:background="@drawable/dialog_sure_bg"
+            android:text="@string/please_search"
+            android:textColor="@color/white"
+            android:layout_toRightOf="@id/search_et"/>
+    </RelativeLayout>
+    <ListView
+        android:id="@+id/search_lv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:dividerHeight="6dp"
+        android:divider="@color/grey_bg" />
+
+    <TextView
+        android:id="@+id/search_tv_empty"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/date_empty"
+        android:gravity="center"
+        android:textSize="20sp"
+        android:drawableTop="@mipmap/it_searchtext"
+        android:layout_marginTop="250dp"/>
+
+
+</LinearLayout>

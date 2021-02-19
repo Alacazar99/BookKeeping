@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+   android:background="@color/grey_bg">
+
+    <RelativeLayout
+        android:id="@+id/frag_record_rl_top"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:layout_centerHorizontal="true"
+        android:padding="10dp">
+
+        <ImageView
+            android:id="@+id/frag_record_iv"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@mipmap/ic_qita_fs" />
+
+        <TextView
+            android:id="@+id/frag_record_out_Tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/frag_record_iv"
+            android:text="其他"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+        <EditText
+            android:id="@+id/frag_record_et_money"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:inputType="number"
+            android:hint="消费金额"
+            android:focusableInTouchMode="true"
+            android:textColor="@color/grey_7d7d7d"
+            android:textSize="20sp"
+            android:background="@color/white"/>
+    </RelativeLayout>
+    <View
+        android:id="@+id/frag_record_lineOne"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/frag_record_rl_top"
+        android:background="@color/grey_bg"/>
+    <GridView
+        android:id="@+id/frag_record_gv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/frag_record_lineOne"
+        android:background="@color/white"
+        android:numColumns="5" />
+
+<!--    自定义软键盘-->
+<android.inputmethodservice.KeyboardView
+    android:id="@+id/frag_record_keyboard"
+    android:layout_width="match_parent"
+    android:layout_height="200dp"
+    android:keyBackground="@drawable/keyboard_view"
+    android:background="@color/grey_bg"
+    android:keyTextColor="@color/black"
+    android:focusableInTouchMode="true"
+    android:paddingTop="1dp"
+    android:layout_marginBottom="5dp"
+    android:layout_centerHorizontal="true"
+    android:layout_alignParentBottom="true"
+    android:shadowColor="@color/white"
+    android:shadowRadius="0.0"/>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_below="@id/frag_record_gv"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:weightSum="10"
+        android:background="@color/grey_bg">
+
+        <TextView
+            android:id="@+id/frag_record_tv_beizhu"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="5"
+            android:background="@drawable/ripple_bg"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="添加备注" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="|"
+            />
+        <TextView
+            android:id="@+id/frag_record_tv_time"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:text="2021年10月30日"
+            android:gravity="center"
+            android:textSize="15sp"
+            android:layout_weight="5"
+            android:background="@drawable/ripple_bg"
+            android:layout_marginLeft="2dp"
+            android:padding="10dp"/>
+
+    </LinearLayout>
+</RelativeLayout>

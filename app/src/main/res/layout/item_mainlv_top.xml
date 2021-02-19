@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/grey_bg">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape_radius"
+        android:padding="20dp">
+        <TextView
+            android:id="@+id/item_mainlv_top_tv1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/month_out"/>
+
+        <TextView
+            android:id="@+id/item_mainlv_top_out"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="￥ 999.00"
+            android:layout_below="@id/item_mainlv_top_tv1"
+            android:textSize="27sp"
+            android:textStyle="bold"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:textColor="@color/red_DC143C"/>
+
+        <ImageView
+            android:id="@+id/item_mainlv_show"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:src="@mipmap/ih_show"
+            android:layout_alignTop="@id/item_mainlv_top_out"/>
+
+        <TextView
+            android:id="@+id/item_mainlv_top_tv2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/month_in"
+            android:layout_below="@id/item_mainlv_top_out"
+            android:layout_marginTop="10dp"/>
+        <TextView
+            android:id="@+id/item_mainlv_top_in"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/green_008000"
+            android:layout_marginTop="5dp"
+            android:text="￥ 19999.99"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:layout_below="@id/item_mainlv_top_out"
+            android:layout_toRightOf="@id/item_mainlv_top_tv2"
+            android:layout_marginLeft="10dp"/>
+        <TextView
+            android:id="@+id/item_mainlv_top_budget"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="￥ 0.0"
+            android:textColor="@color/black"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="5dp"
+            android:layout_alignBottom="@id/item_mainlv_top_tv2"/>
+
+        <TextView
+            android:id="@+id/item_mainlv_top_tv3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/budget"
+            android:layout_toLeftOf="@id/item_mainlv_top_budget"
+            android:layout_alignBottom="@+id/item_mainlv_top_tv2"
+            android:textStyle="bold"
+            />
+        <TextView
+            android:id="@+id/item_mainlv_top_tv4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@mipmap/ih_biaoge"
+            android:layout_below="@id/item_mainlv_top_tv2"
+            android:layout_marginTop="25dp"
+            android:layout_centerHorizontal="true"
+            android:text="@string/see_excel"
+            android:textColor="@color/green_006400"
+            android:drawablePadding="10dp"/>
+
+    </RelativeLayout>
+    <TextView
+        android:id="@+id/item_mainlv_top_tv_day"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="今日支出￥ 0，收入￥ 0"
+        android:textStyle="bold"
+        android:paddingLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"/>
+
+</LinearLayout>
