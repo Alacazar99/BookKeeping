@@ -41,7 +41,7 @@ public class CalendarDialog extends Dialog implements View.OnClickListener {
     public int year,month;
 
     public interface OnRefreshListener{
-        public void onRefresh(int seletedPos,int year,int month);
+        public void onRefresh(int selectPos,int year,int month);
     }
     OnRefreshListener onRefreshListener;
 
@@ -76,10 +76,10 @@ public class CalendarDialog extends Dialog implements View.OnClickListener {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Adapter.selectPos = position;
                 Adapter.notifyDataSetChanged();
-                int setmonth = position+1;
-                int setyear = Adapter.year;
+                int month = position+1;
+                int year = Adapter.year;
                 // 获取到被选中的年份和月份；
-                onRefreshListener.onRefresh(selectPos,setyear,setmonth);
+                onRefreshListener.onRefresh(selectPos,year,month);
                 cancel();
             }
         });
@@ -120,7 +120,7 @@ public class CalendarDialog extends Dialog implements View.OnClickListener {
         hsvViewList = new ArrayList<>(); // 添加进入线性布局中的TextView；
         yearList = DBManager.getYearListFromAccounttb();  // 获取数据库中有多少个年份；
         if (yearList.size() == 0) {
-            // year = Calendar.getInstance().get(Calendar.YEAR);
+             year = Calendar.getInstance().get(Calendar.YEAR);
             yearList.add(year);
         }
         for (int i = 0; i < yearList.size();i++){
@@ -147,7 +147,7 @@ public class CalendarDialog extends Dialog implements View.OnClickListener {
                 public void onClick(View v) {
                     changeRvbg(pos);
                     selectPos = pos;
-                    // 获取被选中的年份； 然后数据源发生变化；、
+                    // 获取被选中的年份 ； 然后 数据源发生变化；
                     int setYearNum = yearList.get(selectPos);
                     Adapter.setYear(setYearNum);
                 }
