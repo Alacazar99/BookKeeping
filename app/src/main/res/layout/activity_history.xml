@@ -14,7 +14,7 @@
         <ImageView
             android:id="@+id/history_back"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="20dp"
             android:src="@mipmap/it_back"
             android:onClick="onClick"
             android:layout_centerVertical="true"/>

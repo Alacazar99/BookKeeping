@@ -21,6 +21,7 @@ import android.widget.TextView;
 
 import com.example.mybookkeeping.db.AccountBean;
 import com.example.mybookkeeping.db.DBManager;
+import com.example.mybookkeeping.mActivity.MonthChartActivity;
 import com.example.mybookkeeping.mActivity.RecordActivity;
 import com.example.mybookkeeping.mActivity.SearchActivity;
 import com.example.mybookkeeping.mAdapter.AccountAdapter;
@@ -48,7 +49,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     // 头布局；
     View headerView;
-    TextView topOutTv,topInTv,topBudgetTv,topConTv;
+    TextView topOutTv,topInTv,topBudgetTv,topConTv,topTvToInfo;
     ImageView topShowIv;
     SharedPreferences preferences;
 
@@ -124,11 +125,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         topBudgetTv = headerView.findViewById(R.id.item_mainlv_top_budget);
         topConTv = headerView.findViewById(R.id.item_mainlv_top_tv_day);
         topShowIv = headerView.findViewById(R.id.item_mainlv_show);
+        topTvToInfo = headerView.findViewById(R.id.item_mainlv_top_tvToInfo);
 
         // 控件设置点击事件；
         topBudgetTv.setOnClickListener(this);
         topConTv.setOnClickListener(this);
         topShowIv.setOnClickListener(this);
+        topTvToInfo.setOnClickListener(this);
     }
 
 
@@ -218,7 +221,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 //  设置本月预算；
                 showBudgetDialog();
                 break;
-            case R.id.item_mainlv_top_tv4:
+            case R.id.item_mainlv_top_tvToInfo:
+                Intent intentToInfo = new Intent(this, MonthChartActivity.class);
+                startActivity(intentToInfo);
                 break;
             case R.id.item_mainlv_show:
                 // 显示 隐藏；切换TextView；

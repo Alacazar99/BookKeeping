@@ -2,7 +2,9 @@
     <string name="app_name">简约-记账笔记</string>
     <string name="editOne">记一笔..</string>
     <string name="month_out">本月支出</string>
+    <string name="out">支出</string>
     <string name="month_in">本月收入</string>
+    <string name="in">收入</string>
     <string name="budget">本月剩余</string>
     <string name="see_excel">表格查询分析</string>
     <string name="add_remark">添加备注</string>

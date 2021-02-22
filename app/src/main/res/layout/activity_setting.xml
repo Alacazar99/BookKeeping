@@ -14,9 +14,9 @@
         <ImageView
             android:id="@+id/setting_iv_back"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="20dp"
             android:src="@mipmap/it_back"
-            android:layout_marginLeft="15dp"
+            android:layout_marginLeft="10dp"
             android:layout_centerVertical="true"
             android:onClick="onClick"
             />

@@ -17,6 +17,7 @@ import androidx.annotation.NonNull;
 import com.example.mybookkeeping.mActivity.AboutActivity;
 import com.example.mybookkeeping.R;
 import com.example.mybookkeeping.mActivity.HistoryActivity;
+import com.example.mybookkeeping.mActivity.MonthChartActivity;
 import com.example.mybookkeeping.mActivity.SettingActivity;
 
 
@@ -80,6 +81,8 @@ public class MoreDialog extends Dialog implements View.OnClickListener {
                 getContext().startActivity(intent);
                 break;
             case R.id.dialog_more_btn_info:
+                intent.setClass(getContext(), MonthChartActivity.class);
+                getContext().startActivity(intent);
                 break;
             case R.id.dialog_more_cancel:
                 cancel();
