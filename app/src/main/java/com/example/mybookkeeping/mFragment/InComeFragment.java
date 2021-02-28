@@ -21,7 +21,7 @@ import java.util.List;
  * A simple {@link Fragment} subclass.
  * create an instance of this fragment.
  */
-public class InComeFragment extends BaseRecordFragment {
+public class InComeFragment extends BaseComFragment {
 
 
     @Override
@@ -33,11 +33,11 @@ public class InComeFragment extends BaseRecordFragment {
         adapter.notifyDataSetChanged();
         typeTv.setText("其他");
         typeIv.setImageResource(R.mipmap.in_qt_fs);
-        moneyEdit.setHint("收入金额");
+        moneyEt.setHint("￥ 0.00");
     }
 
     @Override
-    protected void saveAccountToDB() {
+    public void saveAccountToDB() {
         accountBean.setKind(1);
         DBManager.insertItemToAccounttb(accountBean);
     }

@@ -35,6 +35,7 @@ public class HistoryActivity extends AppCompatActivity implements View.OnClickLi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_history);
+
         historyLv = findViewById(R.id.history_ListView);
         timeTv = findViewById(R.id.history_tv_time);
 

@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
     android:background="@color/grey_bg"
     tools:context=".mActivity.SearchActivity"
     android:orientation="vertical">
@@ -21,31 +20,41 @@
             android:onClick="onClick"
             android:layout_centerVertical="true"
             android:src="@mipmap/it_back"/>
-        <EditText
-            android:id="@+id/search_et"
-            android:layout_width="290dp"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="10dp"
-            android:layout_toRightOf="@id/search_iv_back"
-            android:background="@drawable/dialog_cancel_bg"
-            android:paddingTop="10dp"
-            android:textSize="16sp"
-            android:paddingBottom="10dp"
-            android:paddingLeft="20dp"
-            android:hint="@string/please_search_info"/>
-        <Button
-            android:id="@+id/search_iv_sh"
-            android:layout_width="60dp"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_centerHorizontal="true"
-            android:layout_margin="5dp"
-            android:onClick="onClick"
-            android:background="@drawable/dialog_sure_bg"
-            android:text="@string/please_search"
-            android:textColor="@color/white"
-            android:layout_toRightOf="@id/search_et"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:weightSum="10"
+            android:gravity="center_vertical"
+            android:layout_toRightOf="@id/search_iv_back">
+
+            <EditText
+                android:id="@+id/search_et"
+                android:layout_width="2dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="2dp"
+                android:layout_weight="8"
+                android:background="@drawable/dialog_cancel_bg"
+                android:hint="@string/please_search_info"
+                android:paddingLeft="20dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:textSize="16sp">
+
+                <requestFocus />
+            </EditText>
+            <Button
+                android:id="@+id/search_iv_sh"
+                android:layout_width="0dp"
+                android:layout_weight="2"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:onClick="onClick"
+                android:background="@drawable/dialog_sure_bg"
+                android:text="@string/please_search"
+                android:textColor="@color/white" />
+
+        </LinearLayout>
+
     </RelativeLayout>
     <ListView
         android:id="@+id/search_lv"
@@ -53,7 +62,6 @@
         android:layout_height="match_parent"
         android:dividerHeight="6dp"
         android:divider="@color/grey_bg" />
-
     <TextView
         android:id="@+id/search_tv_empty"
         android:layout_width="match_parent"
@@ -63,6 +71,5 @@
         android:textSize="20sp"
         android:drawableTop="@mipmap/it_searchtext"
         android:layout_marginTop="250dp"/>
-
 
 </LinearLayout>

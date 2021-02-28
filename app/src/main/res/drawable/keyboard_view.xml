@@ -10,7 +10,8 @@ android:color="@color/green_006400">
     <shape android:shape="rectangle">
         <corners android:radius="25dp"/>
         <!-- 填充背景色-->
-        <solid android:color="@color/grey_d4d4d4"/>
+        <solid android:color="@color/grey_bg"/>
+        <stroke android:width="3dp" android:color="@color/grey_f0f0f0" android:dashWidth="3dp"/>
     </shape>
 </item>
 

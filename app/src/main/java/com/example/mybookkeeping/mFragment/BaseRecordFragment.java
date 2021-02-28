@@ -3,6 +3,7 @@ package com.example.mybookkeeping.mFragment;
 import android.inputmethodservice.KeyboardView;
 import android.os.Bundle;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.os.Handler;
@@ -56,10 +57,21 @@ public abstract class BaseRecordFragment extends Fragment implements View.OnClic
     int year,month,day;
 
     AccountBean accountBean;
+    private String time;
 
 
     public BaseRecordFragment() {
         // Required empty public constructor
+    }
+
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        accountBean = new AccountBean();   //创建对象
+        accountBean.setTypename("其他");
+        accountBean.setsImageId(R.mipmap.ic_qita_fs);
+
     }
 
     @Override
@@ -68,7 +80,6 @@ public abstract class BaseRecordFragment extends Fragment implements View.OnClic
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_base_record, container, false);
 
-        accountBean = new AccountBean();   //创建对象
         timeTv = view.findViewById(R.id.frag_record_tv_time);
 
         // 获取当前时间；
@@ -82,13 +93,56 @@ public abstract class BaseRecordFragment extends Fragment implements View.OnClic
         //设置GridView 的点击事件；
         setGvListener();
 
+        // 设置软键盘确定按钮的点击事件；
+        initKeyBoardOnclickListener();
+
         return view;
     }
 
+    private void initKeyBoardOnclickListener() {
+        // 设置接口，监听按钮被点击；
+        boardUtils.setOnEnsureListener(new KeyBoardUtils.OnEnsureListener(){
+            @Override
+            public void onEnsure() {
+                // 点击确定按钮;
+                String moneyStr = moneyEdit.getText().toString();
+                if (TextUtils.isEmpty(moneyStr) || moneyStr.equals("0")){
+                    // getActivity().finish();
+                    Toast.makeText(getActivity(), "金额不可为空！", Toast.LENGTH_SHORT).show();
+                    return;
+                }else{
+                    float money = Float.parseFloat(moneyStr);
+                    // 当按下 确定，将数据源存入数据库中；
+                    accountBean.setMoney(money);
+                    accountBean.setTypename((String) typeTv.getText());
+                    accountBean.setTime(time);
+                    accountBean.setYear(year);
+                    accountBean.setMonth(month);
+                    accountBean.setDay(day);
+
+                    String showBeizhuText = String.valueOf(beizhuTv.getText());
+                    if (showBeizhuText == "添加备注") {
+                        showBeizhuText = "无备注";
+                    }
+                    accountBean.setBeizhu(showBeizhuText);
+                    // 获取记录信息，保持数据库中；
+                    Toast.makeText(getActivity(), "添加成功^.^", Toast.LENGTH_SHORT).show();
+                    //获取记录的信息，保存在数据库当中
+                    saveAccountToDB();
+                    // 返回上一级；
+                    getActivity().finish();
+                }
+            }
+        });
+    }
+
+
+    // 设置初始化世间
     private void setInitTime() {
         Date date = new Date();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy年MM月dd日 HH:mm");
-        String time = sdf.format(date);
+        time = sdf.format(date);
+
         timeTv.setText(time);
 
         accountBean.setTime(time);
@@ -101,6 +155,7 @@ public abstract class BaseRecordFragment extends Fragment implements View.OnClic
         accountBean.setDay(day);
     }
 
+    // 设置GV视图的点击事件；
     private void setGvListener(){
         typeGv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -119,11 +174,13 @@ public abstract class BaseRecordFragment extends Fragment implements View.OnClic
         });
     }
 
+    // 加载Gv视图的数据源；
     public void loadDataToGV(){
         typeList = new ArrayList<>();
         adapter = new TypeBaseAdapter(getContext(),typeList);
         typeGv.setAdapter(adapter);
     }
+    // 初始化视图；
     private void initView(final View view){
         keyboardView = view.findViewById(R.id.frag_record_keyboard);
         moneyEdit = view.findViewById(R.id.frag_record_et_money);
@@ -131,6 +188,7 @@ public abstract class BaseRecordFragment extends Fragment implements View.OnClic
         typeGv = view.findViewById(R.id.frag_record_gv);
 
         typeTv = view.findViewById(R.id.frag_record_out_Tv);
+
 
         beizhuTv = view.findViewById(R.id.frag_record_tv_beizhu);
 
@@ -141,30 +199,7 @@ public abstract class BaseRecordFragment extends Fragment implements View.OnClic
         boardUtils = new KeyBoardUtils(keyboardView,moneyEdit);
         boardUtils.showKeyboard();
 
-        // 设置接口，监听按钮被点击；
-        boardUtils.setOnEnsureListener(new KeyBoardUtils.OnEnsureListener(){
-            @Override
-            public void onEnsure() {
-                // 点击确定按钮;
-                String moneyStr = moneyEdit.getText().toString();
-                if (TextUtils.isEmpty(moneyStr) || moneyStr.equals("0")){
-                    // getActivity().finish();
-                    Toast.makeText(getActivity(), "金额不可为空！", Toast.LENGTH_SHORT).show();
-                    return;
-                }else{
-                    float money = Float.parseFloat(moneyStr);
-                    accountBean.setMoney(money);
-                    accountBean.setTypename((String) typeTv.getText());
 
-                    accountBean.setBeizhu((String) beizhuTv.getText());
-                    // 获取记录信息，保持数据库中；
-                    Toast.makeText(getActivity(), "已记入数据库中...", Toast.LENGTH_SHORT).show();
-                    saveAccountToDB();
-                    // 返回上一级；
-                    getActivity().finish();
-                }
-            }
-        });
 
     }
 
@@ -187,7 +222,7 @@ public abstract class BaseRecordFragment extends Fragment implements View.OnClic
     private void showTimeDialog() {
         final SelectTimeDialog dialog = new SelectTimeDialog(getContext());
         dialog.show();
-        //设定确定按钮被点击了的监听器;
+        //设定确定按钮 被点击了的监听器;
         dialog.setOnEnsureListener(new SelectTimeDialog.OnEnsureListener() {
             @Override
             public void onEnsure(String time, int year, int month, int day) {

@@ -9,6 +9,7 @@
         android:layout_height="wrap_content"
         android:text="2020/1"
         android:padding="8dp"
+        android:maxLines="1"
         android:gravity="center"
         android:background="@color/grey_bg"
         android:textColor="@color/black"/>

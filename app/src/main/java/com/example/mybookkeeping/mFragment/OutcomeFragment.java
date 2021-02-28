@@ -20,7 +20,7 @@ import java.util.List;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class OutcomeFragment extends BaseRecordFragment {
+public class OutcomeFragment extends BaseComFragment {
 
     @Override
     public void loadDataToGV() {
@@ -30,14 +30,13 @@ public class OutcomeFragment extends BaseRecordFragment {
         typeList.addAll(outlist);
         adapter.notifyDataSetChanged();
         typeTv.setText("其他");
-        moneyEdit.setHint("支出金额");
+        moneyEt.setHint("￥ 0.00");
         typeIv.setImageResource(R.mipmap.ic_qita_fs);
     }
 
     @Override
-    protected void saveAccountToDB() {
+    public void saveAccountToDB() {
         accountBean.setKind(0);
-//        accountBean.setTypename();
         DBManager.insertItemToAccounttb(accountBean);
     }
 }

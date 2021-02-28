@@ -36,9 +36,15 @@
         <Button
             android:id="@+id/dialog_more_btn_info"
             style="@style/dialogBtnMoreStyle"
-            android:layout_marginRight="30dp"
+            android:layout_marginRight="15dp"
             android:drawableTop="@mipmap/it_xiqing"
             android:text="@string/account_info"/>
+        <Button
+            android:id="@+id/dialog_more_btn_share"
+            style="@style/dialogBtnMoreStyle"
+            android:layout_marginRight="15dp"
+            android:drawableTop="@mipmap/it_share"
+            android:text="@string/shareSoft"/>
     </LinearLayout>
     <ImageView
         android:id="@+id/dialog_more_cancel"

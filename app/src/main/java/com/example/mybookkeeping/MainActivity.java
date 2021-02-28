@@ -142,13 +142,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         day = calendar.get(calendar.DAY_OF_MONTH);
     }
 
-//    private void initTodayLv() {
-//        todayLv = findViewById(R.id.main_lv);
-//        mDatas = new ArrayList<>();
-//        // 设置适配器；
-//        adapter = new AccountAdapter(this, mDatas);
-//        todayLv.setAdapter(adapter);
-//    }
 
 
     // 获取焦点时，会调用的方法；
@@ -186,8 +179,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         List<AccountBean> list = DBManager.getAccountListOneDayFromAccounttb(year, month, day);
         mDatas.clear();
         mDatas.addAll(list);
-        Log.d("测试",""+mDatas);
-        Log.d("输出", String.valueOf(mDatas));
+//        Log.d("测试",""+mDatas);
         adapter.notifyDataSetChanged();
     }
 

@@ -9,6 +9,8 @@
    <ListView
        android:id="@+id/chart_fragment_lv"
        android:layout_width="match_parent"
+       android:divider="@null"
+       android:dividerHeight="6dp"
        android:layout_height="wrap_content"/>
 
 </FrameLayout>
