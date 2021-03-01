@@ -152,13 +152,12 @@
                 android:layout_marginTop="20dp"
                 android:textColor="@color/black"
                 android:text="源代码" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
-                android:text="gitHub地址"
-                android:textSize="16sp"
-                android:textStyle="bold" />
+                android:text="https://github.com/Alacazar99/MyBookKeeping" />
 
         </LinearLayout>
     </ScrollView>

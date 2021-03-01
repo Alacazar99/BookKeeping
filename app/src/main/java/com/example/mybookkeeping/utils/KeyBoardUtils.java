@@ -30,6 +30,7 @@ public class KeyBoardUtils {
     public KeyBoardUtils(KeyboardView keyboardView, EditText editText) {
         this.keyboardView = keyboardView;
         this.editText = editText;
+
         this.editText.setInputType(InputType.TYPE_NULL);  //取消弹出系统键盘；
 
         k1 = new Keyboard(this.editText.getContext(), R.xml.key);
@@ -69,7 +70,6 @@ public class KeyBoardUtils {
                 case Keyboard.KEYCODE_DONE:   // 完成；
                     onEnsureListener.onEnsure();   // 通过接口回调，实现调用；
                     break;
-
                 default:
                     editable.insert(start,Character.toString((char) primaryCode));
             }

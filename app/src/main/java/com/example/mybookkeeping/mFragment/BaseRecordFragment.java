@@ -199,8 +199,6 @@ public abstract class BaseRecordFragment extends Fragment implements View.OnClic
         boardUtils = new KeyBoardUtils(keyboardView,moneyEdit);
         boardUtils.showKeyboard();
 
-
-
     }
 
     protected abstract void saveAccountToDB();
@@ -264,7 +262,6 @@ public abstract class BaseRecordFragment extends Fragment implements View.OnClic
             }
             private void initDelayed() {
                 Handler handler = new Handler();
-
                 handler.postDelayed(new Runnable() {
                     @Override
                     public void run() {

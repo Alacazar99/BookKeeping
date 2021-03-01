@@ -38,7 +38,7 @@ import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
-
+import android.widget.Toast;
 
 
 import java.text.SimpleDateFormat;
@@ -80,8 +80,34 @@ public abstract class BaseComFragment extends Fragment implements View.OnClickLi
             //给GridView填充数据的方法
             loadDataToGV();
             setGVListener(); //设置GridView每一项的点击事件
+
+            // 设置软键盘确定按钮的点击事件；
+            initKeyBoardOnclickListener();
             return view;
         }
+    private void initKeyBoardOnclickListener() {
+//        //让自定义软键盘显示出来
+//        KeyBoardUtils boardUtils = new KeyBoardUtils(keyboardView, moneyEt);
+//        boardUtils.showKeyboard();
+        //设置接口，监听确定按钮按钮被点击了
+        boardUtils.setOnEnsureListener(new KeyBoardUtils.OnEnsureListener() {
+            @Override
+            public void onEnsure() {
+                //获取输入钱数
+                String moneyStr = moneyEt.getText().toString();
+                if (TextUtils.isEmpty(moneyStr) || moneyStr.equals("0")) {
+                    getActivity().finish();
+                    return;
+                }
+                float money = Float.parseFloat(moneyStr);
+                accountBean.setMoney(money);
+                //获取记录的信息，保存在数据库当中
+                saveAccountToDB();
+                // 返回上一级页面
+                getActivity().finish();
+            }
+        });
+    }
 
         /* 获取当前时间，显示在timeTv上*/
         private void setInitTime() {
@@ -135,27 +161,11 @@ public abstract class BaseComFragment extends Fragment implements View.OnClickLi
             timeTv = view.findViewById(R.id.frag_record_tv_time);
             beizhuTv.setOnClickListener(this);
             timeTv.setOnClickListener(this);
-            //让自定义软键盘显示出来
-            KeyBoardUtils boardUtils = new KeyBoardUtils(keyboardView, moneyEt);
+
+            // 显示自定义键盘；
+            boardUtils = new KeyBoardUtils(keyboardView,moneyEt);
             boardUtils.showKeyboard();
-            //设置接口，监听确定按钮按钮被点击了
-            boardUtils.setOnEnsureListener(new KeyBoardUtils.OnEnsureListener() {
-                @Override
-                public void onEnsure() {
-                    //获取输入钱数
-                    String moneyStr = moneyEt.getText().toString();
-                    if (TextUtils.isEmpty(moneyStr) || moneyStr.equals("0")) {
-                        getActivity().finish();
-                        return;
-                    }
-                    float money = Float.parseFloat(moneyStr);
-                    accountBean.setMoney(money);
-                    //获取记录的信息，保存在数据库当中
-                    saveAccountToDB();
-                    // 返回上一级页面
-                    getActivity().finish();
-                }
-            });
+
         }
 
         /* 让子类一定要重写这个方法*/
@@ -175,9 +185,6 @@ public abstract class BaseComFragment extends Fragment implements View.OnClickLi
 
         /* 弹出显示时间的对话框*/
         private void showTimeDialog() {
-            // 弹出备注对话框前先隐藏自定义按键；
-            boardUtils.hideKeyboard();
-
             SelectTimeDialog dialog = new SelectTimeDialog(getContext());
             dialog.show();
             //设定确定按钮被点击了的监听器
@@ -195,6 +202,9 @@ public abstract class BaseComFragment extends Fragment implements View.OnClickLi
 
         /* 弹出备注对话框*/
         public void showBZDialog() {
+            // 弹出备注对话框前先隐藏自定义按键；
+            boardUtils.hideKeyboard();
+
             final BeiZhuDialog dialog = new BeiZhuDialog(getContext());
             dialog.show();
             dialog.setDialogSize();
@@ -210,6 +220,7 @@ public abstract class BaseComFragment extends Fragment implements View.OnClickLi
                     // 设置延时操作；
                     initDelayed();
                 }
+
                 @Override
                 public void onCancel() {
                     // 点击取消按钮；

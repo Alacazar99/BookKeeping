@@ -51,28 +51,13 @@
         android:numColumns="5"
         android:paddingTop="5dp"
         android:paddingBottom="5dp"/>
-    <!-- 自定义软键盘-->
-    <android.inputmethodservice.KeyboardView
-        android:id="@+id/frag_record_keyboard"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:keyBackground="@drawable/keyboard_view"
-        android:background="@color/grey_bg"
-        android:keyTextColor="@color/black"
-        android:keyTextSize="18sp"
-        android:focusable="true"
-        android:focusableInTouchMode="true"
-        android:paddingTop="20dp"
-        android:paddingBottom="10dp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:shadowColor="@color/white"
-        android:shadowRadius="0.3"/>
+
     <LinearLayout
-        android:layout_above="@id/frag_record_keyboard"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:weightSum="2"
+        android:layout_marginTop="10dp"
+        android:layout_below="@id/frag_record_gv"
         android:orientation="horizontal"
         android:background="@color/grey_bg">
         <TextView
@@ -98,4 +83,23 @@
             android:padding="10dp"/>
 
     </LinearLayout>
+
+    <!-- 自定义软键盘-->
+    <android.inputmethodservice.KeyboardView
+        android:id="@+id/frag_record_keyboard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:keyBackground="@drawable/keyboard_view"
+        android:background="@color/grey_bg"
+        android:keyTextColor="@color/black"
+        android:keyTextSize="18sp"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:paddingTop="20dp"
+        android:paddingBottom="10dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:shadowColor="@color/white"
+        android:shadowRadius="0.3"/>
+
 </RelativeLayout>

@@ -55,24 +55,6 @@
         android:layout_below="@id/frag_record_lineOne"
         android:background="@color/white"
         android:numColumns="5" />
-
-<!--    自定义软键盘-->
-<android.inputmethodservice.KeyboardView
-    android:id="@+id/frag_record_keyboard"
-    android:layout_width="match_parent"
-    android:layout_height="200dp"
-    android:keyBackground="@drawable/keyboard_view"
-    android:background="@color/grey_bg"
-    android:keyTextColor="@color/black"
-    android:focusableInTouchMode="true"
-    android:paddingTop="1dp"
-    android:layout_marginBottom="5dp"
-    android:layout_centerHorizontal="true"
-    android:layout_alignParentBottom="true"
-    android:shadowColor="@color/white"
-    android:shadowRadius="0.0"/>
-
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="80dp"
@@ -110,4 +92,23 @@
             android:padding="10dp"/>
 
     </LinearLayout>
+
+<!--    自定义软键盘-->
+<android.inputmethodservice.KeyboardView
+    android:id="@+id/frag_record_keyboard"
+    android:layout_width="match_parent"
+    android:layout_height="200dp"
+    android:keyBackground="@drawable/keyboard_view"
+    android:background="@color/grey_bg"
+    android:keyTextColor="@color/black"
+    android:focusableInTouchMode="true"
+    android:paddingTop="1dp"
+    android:layout_marginBottom="5dp"
+    android:layout_centerHorizontal="true"
+    android:layout_alignParentBottom="true"
+    android:shadowColor="@color/white"
+    android:shadowRadius="0.0"/>
+
+
+
 </RelativeLayout>
